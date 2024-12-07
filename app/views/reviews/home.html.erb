@@ -2,3 +2,6 @@
 
 
 <%= link_to "Scan a QR-Code", new_review_path , class:"green-white-button p-2 text-decoration-none"%>
+<%= simple_form_for @review do |f| %>
+  <%= f.input :photo, as: :file, accept: "image/*", capture: "environment"%>
+<% end %>

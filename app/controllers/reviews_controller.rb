@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   end
 
   def home
+    @review = Review.new
   end
 
   def new
