@@ -1,6 +1,14 @@
+<h3 class="text-center mt-4">Your messages</h3>
 <% unless @reviews.nil?%>
+<div class="review-card-container mt-4">
   <% @reviews.each do |review|%>
-    <div><%= review.author %></div>
-    <div><%= review.content %></div>
+    <div class="review-card">
+     <div class="author-line">
+        <div class="avatar me-2"></div>
+        <div><strong><%= review.author %></strong></div>
+     </div>
+      <div class="mt-1"><%= review.content %></div>
+    </div>
   <% end %>
+</div>
 <% end %>r
