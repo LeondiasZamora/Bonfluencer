@@ -1,0 +1,6 @@
+<% unless @reviews.nil?%>
+  <% @reviews.each do |review|%>
+    <div><%= review.author %></div>
+    <div><%= review.content %></div>
+  <% end %>
+<% end %>r
