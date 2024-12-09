@@ -1,15 +1,36 @@
-<%= link_to "Add a message", new_review_path, class:"green-white-button p-2 text-decoration-none" %>
-<h3 class="text-center mt-4">Your messages</h3>
-<% unless @reviews.nil?%>
-<div class="review-card-container mt-4">
-  <% @reviews.each do |review|%>
-    <div class="review-card">
-     <div class="author-line">
-        <div class="avatar me-2"></div>
-        <div><strong><%= review.author %></strong></div>
-     </div>
-      <div class="mt-1"><%= review.content %></div>
+<div class="index-container">
+  <div id="top-information" class="mb-4">
+    <div class="left-info">
+      <%= image_tag "test_avatar.jpeg", id:"profile-picture"%>
+      <div class="info-whitout-picture mt-2">
+        <strong><%= current_user.username%></strong>
+        <div class="bio-info">
+          <%= current_user.bio %>
+        </div>
+      </div>
+    </div>
+    <div class="right-info">
+      <div class="my-1"><strong><%= current_user.points %></strong> Points</div>
+      <div class="my-1"><strong><%= current_user.points + 1%></strong> Followers</div>
+      <div class="my-1"><strong><%= current_user.points - 46%></strong> Events</div>
+    </div>
+  </div>
+  <div class="border-line"></div>
+  <div class="d-flex justify-content-between align-items-center header-reviews mt-2">
+    <h3 class="text-center mb-0 me-2 ps-2">Your messages</h3>
+    <%= link_to "+", new_review_path, class:"p-2 ms-2 text-decoration-none px-3 add-message-button" %>
+  </div>
+  <% unless @reviews.nil?%>
+    <div class="review-card-container mt-2">
+      <% @reviews.each do |review|%>
+        <div class="review-card">
+        <div class="author-line">
+            <div class="avatar me-2"></div>
+            <div><strong><%= review.author %></strong></div>
+        </div>
+          <div class="mt-1"><%= review.content %></div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
-<% end %>
