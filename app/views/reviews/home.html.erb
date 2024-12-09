@@ -1,7 +1,11 @@
-<h1>homepage</h1>
+<h1 class="text-center">homepage</h1>
+<div class="container">
+  <div class="d-flex justify-content-center mt-3">
+    <%= simple_form_for @review do |f| %>
+      <!-- Label button that triggers camera -->
+      <label for="cameraInput" class="green-white-button p-2 text-decoration-none">Scan a Qr Code</label>
+      <%= f.input :photo, as: :file, input_html: { id: 'cameraInput', accept: "image/*", capture: "camera", style: "display:none;" }, label: false %>
 
-
-<%= link_to "Scan a QR-Code", new_review_path , class:"green-white-button p-2 text-decoration-none"%>
-<%= simple_form_for @review do |f| %>
-  <%= f.input :photo, as: :file, accept: "image/*", capture: "environment"%>
-<% end %>
+    <% end %>
+  </div>
+</div>

@@ -5,3 +5,16 @@
   height: 40px;
 
 }
+
+.add-message-button{
+  font-size:30px;
+  text-decoration: none;
+  color: black;
+}
+
+.back-button{
+  text-decoration: none;
+  &:hover{
+    text-decoration:underline;
+  }
+}
