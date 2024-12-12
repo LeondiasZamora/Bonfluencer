@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = current_user.reviews.order(created_at: :desc)
+    @user = User.find(params[:user_id])
+    @reviews = @user.reviews.order(created_at: :desc)
   end
 
   def home
+    @user = User.find(params[:id])
     @review = Review.new
   end
 
@@ -13,13 +15,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.author = current_user
-    @review.user = User.first
+    @user = User.find(params[:user_id]) # Find the user using user_id from the URL
+    @review = @user.reviews.new(review_params) # Associate review with the correct user
+    @review.author = current_user # Set the current user as the author of the review
+
     current_user.update(points: current_user.points + 1)
 
     if @review.save
-      redirect_to home_path, notice: "You made someone happy today :)"
+      redirect_to user_reviews_path(@user), notice: "You made someone happy today :)"
     else
       render :new, status: :unprocessable_entity
     end
