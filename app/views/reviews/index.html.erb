@@ -15,10 +15,17 @@
       <div class="my-1"><strong><%= current_user.points%></strong> Events</div>
     </div>
   </div>
+  <div class="follow-button-div">
+    <% if current_user.following.exists?(followed: @user) %>
+      <%= link_to 'Unfollow', user_follow_path(@user), method: :delete, data: { turbo_method: :delete } %>
+    <% else %>
+      <%= link_to 'Follow', user_follow_path(@user), method: :post, data: { turbo_method: :post } %>
+    <% end %>
+  </div>
   <div class="border-line"></div>
   <div class="d-flex justify-content-between align-items-center header-reviews mt-2">
     <h3 class="text-center mb-0 me-2 ps-2">Your messages</h3>
-    <%= link_to "+", new_review_path, class:"p-2 ms-2 text-decoration-none px-3 add-message-button" %>
+    <%= link_to "+", new_user_review_path, class:"p-2 ms-2 text-decoration-none px-3 add-message-button" %>
   </div>
   <% unless @reviews.nil?%>
     <div class="review-card-container mt-2">
