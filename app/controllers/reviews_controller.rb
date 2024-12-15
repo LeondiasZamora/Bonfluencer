@@ -11,11 +11,12 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @review.user = User.first
+    @review.user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def create
-    @user = User.find(params[:user_id]) # Find the user using user_id from the URL
+    @user = User.find(params[:user_id])
     @review = @user.reviews.new(review_params) # Associate review with the correct user
     @review.author = current_user # Set the current user as the author of the review
 
