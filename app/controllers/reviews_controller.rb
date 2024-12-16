@@ -1,8 +1,4 @@
 class ReviewsController < ApplicationController
-  def index
-    @user = User.find(params[:user_id])
-    @reviews = @user.reviews.order(created_at: :desc)
-  end
 
   def home
     @user = User.find(params[:id])
