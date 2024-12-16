@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     get "/followers", to: "follows#followers"
     resource :follow, only: %i[create destroy]
-    resources :reviews, only: [:index, :new, :create, :destroy]
+    resources :reviews, only: [:new, :create, :destroy]
   end
 end
