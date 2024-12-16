@@ -11,17 +11,19 @@
     </div>
     <div class="right-info">
       <div class="my-1"><strong><%= @user.points %></strong> Points</div>
-      <div class="my-1"><strong><%= @user.points%></strong> Followers</div>
+      <%= link_to user_followers_path do %>
+        <div class="my-1"><strong><%= @user.following.count%></strong> Followers</div>
+      <% end %>
+      <%# see why this does not work %>
       <div class="my-1"><strong><%= @user.points%></strong> Events</div>
     </div>
   </div>
-  <div class="follow-button-div mb-3">
+  <div class="follow-button-div">
     <% if @user.following.exists?(followed: current_user) %>
       <%= link_to 'Unfollow', user_follow_path(@user), method: :delete, data: { turbo_method: :delete } %>
     <% else %>
       <%= link_to 'Follow', user_follow_path(@user), method: :post, data: { turbo_method: :post } %>
-    <% end %>
-
+    <% end %>e1161a4f41f419d6420fad17f3a4904876
   </div>
   <div class="border-line"></div>
   <div class="d-flex justify-content-between align-items-center header-reviews mt-2">

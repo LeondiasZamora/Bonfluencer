@@ -1,0 +1,10 @@
+<h3>Followers</h3>
+<% @followers.each do |follower| %>
+  <p>
+    <div><%= follower.username %></div>
+    <%# I have to change the migration because a user should have an image and not a review.
+    Then I will also be able to display the avatars here. %>
+    <div>has been following you for <%= Date.today - follower.created_at %>days</div>
+    <%# Here also check if it will always be displayed in days and not in weeks months, years ... %>
+  </p>
+<% end %>
