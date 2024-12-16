@@ -1,3 +1,11 @@
-<% @user.following.each do |follower| %>
-  <div><%= User.find(follower.follower_id).username %><div>
-<% end %>
+<div class="container">
+  <h2 class="text-center mb-3 mt-3">Follower</h2>
+  <div class="follower-list">
+    <% @user.following.each do |follower| %>
+      <div class="follower-card">
+        <div class="avatar me-3 ms-2"></div>
+        <div><%= User.find(follower.followed_id).username %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
