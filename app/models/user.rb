@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :photo
   has_many :reviews
   has_many :followers, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy
   # Users that this user is following
