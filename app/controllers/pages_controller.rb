@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     followed_users_hash = {}
 
     all_users.each do |user|
-      user_rev = user.reviews
+      user_rev = user.reviews.where('created_at <= ?', 2.days.ago)
       user.following.where(follower_id: current_user.id).each do |follow|
         followed_user = follow.followed
 
