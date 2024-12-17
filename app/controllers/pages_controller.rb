@@ -4,19 +4,22 @@ class PagesController < ApplicationController
   def home
     # @users = User.joins(:following).where(following: { followed_id: current_user.id }).to_a
     all_users = User.all
-    followed_users_array = []
+    followed_users_hash = {}
 
     all_users.each do |user|
       user_rev = user.reviews
-      user.following.where(followed_id: current_user.id).each do |follow|
+      user.following.where(follower_id: current_user.id).each do |follow|
         followed_user = follow.followed
-        followed_user.define_singleton_method(:reviews) { user_rev }
-        followed_users_array << followed_user
+
+        # Speichere die Reviews in einem Hash, statt sie als Singleton-Methode zu definieren
+        followed_users_hash[followed_user] = user_rev
       end
-    #   user_rev = user.reviews
-    #   followed_users_array.concat(user.following.where(followed_id: current_user.id).to_a)
     end
-    @users = followed_users_array
+
+    # Extrahiere nur die User (Keys) aus dem Hash
+    @users = followed_users_hash.keys
+
+    # Default zu User.first, falls keine User gefunden wurden
     @users = [User.first] if @users.empty?
   end
 end

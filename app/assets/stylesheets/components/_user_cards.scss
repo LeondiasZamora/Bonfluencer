@@ -6,7 +6,6 @@
 .home-outer-card{
   display: flex;
   justify-content: space-between;
-  width: 90%;
   border-radius: 8px;
   border: 1px solid rgb(226, 226, 226);
   background-color: rgb(255, 255, 255);
@@ -24,10 +23,17 @@
 
 .review-card-home{
   display: flex;
+  flex-direction: column;
   width: 90%;
   border-radius: 8px;
   border: 1px solid rgb(226, 226, 226);
   background-color: rgb(255, 255, 255);
   padding: 8px 10px;
+}
 
+.reviews-on-homepage{
+  border-bottom: 1px solid rgb(226, 226, 226);
+  // border-radius: 8px;
+  padding: 4px 5px;
+  margin-bottom: 10px;
 }

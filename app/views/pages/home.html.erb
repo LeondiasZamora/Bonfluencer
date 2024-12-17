@@ -1,18 +1,22 @@
 <div class="container d-flex flex-column align-items-center">
   <% @users.each do |user| %>
-    <% user.reviews.each do |review| %>
-      <div class="review-card-home my-2">
-        <div><%= review.author %></div>
-        <div><%= review.content %></div>
+    <div class="review-card-home my-2 mx-auto">
+      <div>
+        <% user.reviews.each do |review| %>
+          <div class="reviews-on-homepage">
+            <div><strong><%= review.author %></strong></div>
+            <div><%= review.content %></div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <div class="home-outer-card">
-      <div class="home-user-cards">
-        <div><%= user.username %></div>
-        <div><%= user.bio %></div>
-        <div><%= user.points %></div>
+      <div class="home-outer-card">
+        <div class="home-user-cards">
+          <div><%= user.username %></div>
+          <div><%= user.bio %></div>
+          <div><%= user.points %></div>
+        </div>
+        <div class="avatar-home"></div>
       </div>
-      <div class="avatar-home"></div>
     </div>
   <% end %>
 </div>
