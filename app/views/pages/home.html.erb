@@ -1,11 +1,12 @@
 <div class="container d-flex flex-column align-items-center">
+<h3 class="mt-4">The Bonfluencers of Today</h3>
   <% @users.each do |user| %>
     <div class="review-card-home my-2 mx-auto">
-      <div>
+      <div class="mt-1">
         <% user.reviews.where('created_at >= ?', 2.days.ago).each do |review| %>
           <div class="reviews-on-homepage">
-            <div><strong><%= review.author %></strong></div>
-            <div><%= review.content %></div>
+            <div><%= review.author %></div>
+            <div><strong><%= review.content %></strong></div>
           </div>
         <% end %>
       </div>
@@ -13,9 +14,8 @@
         <div class="home-user-cards">
           <div><%= user.username %></div>
           <div><%= user.bio %></div>
-          <div><%= user.points %></div>
         </div>
-        <div class="avatar-home"></div>
+        <div class="avatar-home my-auto"></div>
       </div>
     </div>
   <% end %>
